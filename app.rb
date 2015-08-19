@@ -10,58 +10,47 @@ require('capybara')
 DB = PG.connect({:dbname => 'trains'})
 
 get('/') do
-  erb(:who_are_you)
+  erb(:index)
 end
 
-get('/home_rider') do
-  @lines = Line.all()
-  @stations = Station.all()
-  erb(:home_rider)
+###### LINES
+
+get('/line/:id') do
+  erb(:line)
 end
 
-
-
-get('/lines/:id') do
-  @line = Line.find(params.fetch("id").to_i)
-  @associated_stations = @line.get_associated_stations
+get('/lines') do
   erb(:lines)
 end
 
-get('/stations/:id') do
-  @station = Station.find(params.fetch("id").to_i)
-  @associated_lines = @station.get_associated_lines
+post('/lines') do
+  erb(:success)
+end
 
+###### STATIONS
+
+get('/station/:id') do
+  erb(:station)
+end
+
+get('stations') do
   erb(:stations)
 end
 
-get('/home_operator') do
-  @lines = Line.all()
-  @stations = Station.all()
-  erb(:home_operator)
+post('/stations') do
+  erb(:success)
 end
 
-delete("/lines/:id") do
-  @line = Line.find(params.fetch("id").to_i)
-  @line.delete
-  redirect '/home_operator'
-end
+###### STOPS
 
-delete("/stations/:id") do
-  @station = Station.find(params.fetch("id").to_i)
-  @station.delete
-  redirect '/home_operator'
-end
-
-post("/add_line") do
-  @line_name = params.fetch("line_new")
-  @line = Line.new({:name => @line_name, :id => nil})
-  @line.save
-  redirect '/home_operator'
-end
-
-post("/add_station") do
-  @station_name = params.fetch("station_new")
-  @station = Station.new({:name => @station_name, :id => nil})
-  @station.save
-  redirect '/home_operator'
-end
+# get('/stop/:id') do
+#   erb(:)
+# end
+#
+# get('/stops') do
+#   erb(:)
+# end
+#
+# post('/stops') do
+#   erb(:)
+# end

@@ -1,0 +1,125 @@
+<h1>Train Station Control</h1>
+
+
+<!-- RIDERS -->
+
+
+<div class="col-md-4">
+<h2>For Riders:</h2>
+
+<form id="view_lines" action="index.html" method="post">
+  <div class="form-group">
+    <label for="line_id">View a Line</label>
+    <select id="line_id" name="line_id" type="text">
+      <!-- insert logic here -->
+    </select>
+  </div>
+</form>
+
+<p>
+  <a href="/lines">Show all Lines</a>
+</p>
+
+<form id="view_stations" action="index.html" method="post">
+  <div class="form-group">
+    <label for="station_id">View a Station</label>
+    <select id="station_id" name="station_id" type="text">
+      <!-- insert logic here -->
+    </select>
+  </div>
+</form>
+
+<p>
+  <a href="/stations">Show all Stations</a>
+</p>
+
+<form id="view_stops" action="index.html" method="post">
+  <div class="form-group">
+    <label for="stop_id">View a Stop</label>
+    <select id="stop_id" name="stop_id" type="text">
+      <!-- insert logic here -->
+    </select>
+  </div>
+</form>
+
+<p>
+  <a href="/stops">Show all Stops</a>
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+
+<!-- TICKETS -->
+
+
+<h3>Buy a Ticket</h3>
+
+<form id="buy_ticket" action="index.html" method="post">
+  <div class="form-group">
+    <label for="stop_id">Select a Stop</label>
+    <select id="stop_id" name="stop_id" type="text">
+      <!-- insert logic here -->
+    </select>
+  </div>
+  <button name="button">Buy Ticket</button>
+</form>
+
+<p>
+  <a href="/stops">Show all Stops</a>
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+
+<!-- OPERATORS -->
+
+
+<h2>For Operators:</h2>
+
+<form id="add_line" action="index.html" method="post">
+  <div class="form-group">
+    <label for="name">Add a Line</label>
+    <input type="text" name="name" id="name">
+    </div>
+  <button type="submit">Add Line</button>
+</form>
+
+<form id="view_line" action="index.html" method="post">
+  <div class="form-group">
+    <label for="line_id">View a Line</label>
+    <select id="line_id" name="line_id" type="text">
+      <!-- insert logic here -->
+    </select>
+  </div>
+</form>
+
+<p>
+<a href="/lines">Show all Lines</a>
+</p>
+
+<form id="add_station" action="index.html" method="post">
+  <div class="form-group">
+    <label for="name">Add a Station</label>
+    <input type="text" name="name" id="name">
+  </div>
+  <button type="submit">Add Station</button>
+</form>
+
+<form id="view_station" action="index.html" method="post">
+  <div class="form-group">
+    <label for="station_id">View a Station</label>
+    <select id="station_id" name="station_id" type="text">
+      <!-- insert logic here -->
+    </select>
+  </div>
+</form>
+
+<p>
+<a href="/stations">Show all Stations</a>
+</p>
+
+</div>
