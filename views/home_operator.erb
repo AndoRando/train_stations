@@ -1,0 +1,73 @@
+<div class="jumbotron">
+
+<h1> Lines </h1>
+  <form action="/add_line" method="post">
+  <input type="text" name="line_new">
+  <button type="submit" class="btn btn-danger">Add a line</button>
+  </form>
+
+<% if @lines == [] %>
+  <p> There are no trains anymore... </p>
+
+<% else %>
+
+  <table>
+    <tr>
+      <th>
+        Name:
+      </th>
+    </tr>
+    <% @lines.each do |line| %>
+    <tr>
+      <td>
+        <%= "<a href='lines/#{line.id}'>#{line.name}</a>" %>
+      </td>
+      <td>
+        <form action="/lines/<%= line.id() %>" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <button type="submit" class="btn btn-danger">Delete line</button>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+<% end %>
+
+
+<h1> Stations </h1>
+
+<form action="/add_station" method="post">
+<input type="text" name="station_new">
+<button type="submit" class="btn btn-danger">Add a station</button>
+</form>
+
+<% if @stations == [] %>
+  <p> No current stations </p>
+
+<% else %>
+
+  <table>
+    <tr>
+      <th>
+        Name:
+      </th>
+    </tr>
+    <% @stations.each do |station| %>
+    <tr>
+      <td>
+        <%= "<a href='stations/#{station.id}'>#{station.name}</a>" %>
+      </td>
+      <td>
+        <form action="/stations/<%= station.id() %>" method="post">
+        <input name="_method" type="hidden" value="delete">
+        <button type="submit" class="btn btn-danger">Delete line</button>
+        </form>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+
+
+</div>

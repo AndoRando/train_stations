@@ -1,0 +1,24 @@
+<div class="jumbotron">
+
+<h1> Line <%= @line.name %></h1>
+
+<% if @associated_stations == nil %>
+  <p> The train is bound for glory. </p>
+
+<% else %>
+
+  <table>
+    <tr>
+      <th>
+        Stations:
+      </th>
+    </tr>
+    <% @associated_stations.each do |station| %>
+    <tr>
+      <td>
+        <%= station.name %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
