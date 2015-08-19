@@ -1,0 +1,44 @@
+<form id="view_stops" action="index.html" method="post">
+  <div class="form-group">
+    <label for="stop_id">View a Stop</label>
+    <select id="stop_id" name="stop_id" type="text">
+      <% @stops.each() do |stop| %>
+      <option value="<%= stop.id()%>"><%= stop.name() %></option>
+      <% end %>
+    </select>
+  </div>
+</form>
+
+<p>
+  <a href="/stops">Show all Stops</a>
+</p>
+
+</div>
+
+<div class="col-md-4">
+
+
+  <!-- TICKETS -->
+
+
+  <h3>Buy a Ticket</h3>
+
+  <form id="buy_ticket" action="index.html" method="post">
+    <div class="form-group">
+      <label for="stop_id">Select a Stop</label>
+      <select id="stop_id" name="stop_id" type="text">
+        <% @stops.each() do |stop| %>
+        <option value="<%= stop.id()%>"><%= stop.name() %></option>
+        <% end %>
+      </select>
+    </div>
+    <button name="button">Buy Ticket</button>
+  </form>
+
+  <p>
+    <a href="/stops">Show all Stops</a>
+  </p>
+
+</div>
+
+<div class="col-md-4">

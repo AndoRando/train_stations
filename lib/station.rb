@@ -12,7 +12,7 @@ class Station
     returned_stations.each() do |station|
       name = station.fetch("name")
       id = station.fetch("id").to_i
-      stations.push(Station.new({:name => name, :id => id}))
+      stations.push(Station.new({:name => name, :id => nil}))
     end
     stations
   end
@@ -31,11 +31,13 @@ class Station
   end
 
   define_singleton_method(:find) do |id|
+    found_station = nil
     Station.all().each() do |station|
-      if station.id == id
-        return station
+      if station.id() == id
+        found_station = station
       end
     end
+    found_station
   end
 
   define_method(:update) do |attributes|
@@ -47,7 +49,7 @@ class Station
   # define_method(:associate_line) do |line|
   #   DB.exec("INSERT INTO stops (lines_id, stations_id) VALUES ('#{line.id}', '#{self.id}');")
   # end
-  # 
+  #
   # define_method(:get_associated_lines) do
   #   lines_ids = DB.exec("SELECT lines_id FROM stops WHERE stations_id = #{self.id};")
   #   output_array = []

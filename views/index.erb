@@ -7,72 +7,44 @@
 <div class="col-md-4">
 <h2>For Riders:</h2>
 
-<form id="view_lines" action="index.html" method="post">
-  <div class="form-group">
-    <label for="line_id">View a Line</label>
-    <select id="line_id" name="line_id" type="text">
-      <!-- insert logic here -->
-    </select>
-  </div>
-</form>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Lines
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+    <% @lines.each() do |line| %>
+      <li><a href="/lines/<%= line.id()%>"><%= line.name() %></a></li>
+    <% end %>
+  </ul>
+</div>
 
 <p>
   <a href="/lines">Show all Lines</a>
 </p>
 
-<form id="view_stations" action="index.html" method="post">
-  <div class="form-group">
-    <label for="station_id">View a Station</label>
-    <select id="station_id" name="station_id" type="text">
-      <!-- insert logic here -->
-    </select>
-  </div>
-</form>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Stations
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <% @stations.each() do |station| %>
+    <li><a href="/stations/<%= station.id()%>"><%= station.name() %></a></li>
+    <% end %>
+  </ul>
+</div>
 
 <p>
   <a href="/stations">Show all Stations</a>
 </p>
 
-<form id="view_stops" action="index.html" method="post">
-  <div class="form-group">
-    <label for="stop_id">View a Stop</label>
-    <select id="stop_id" name="stop_id" type="text">
-      <!-- insert logic here -->
-    </select>
-  </div>
-</form>
 
-<p>
-  <a href="/stops">Show all Stops</a>
-</p>
-
-</div>
-
-<div class="col-md-4">
+<!-- INSERT STOPS CODE HERE TOMORROW -->
 
 
-<!-- TICKETS -->
 
-
-<h3>Buy a Ticket</h3>
-
-<form id="buy_ticket" action="index.html" method="post">
-  <div class="form-group">
-    <label for="stop_id">Select a Stop</label>
-    <select id="stop_id" name="stop_id" type="text">
-      <!-- insert logic here -->
-    </select>
-  </div>
-  <button name="button">Buy Ticket</button>
-</form>
-
-<p>
-  <a href="/stops">Show all Stops</a>
-</p>
-
-</div>
-
-<div class="col-md-4">
+<!-- INSERT CODE FOR STOPS ABOVE THIS LINE -->
 
 
 <!-- OPERATORS -->
@@ -80,43 +52,53 @@
 
 <h2>For Operators:</h2>
 
-<form id="add_line" action="index.html" method="post">
+<!-- ADD LINES -->
+
+<form id="add_line" action="/lines" method="post">
   <div class="form-group">
-    <label for="name">Add a Line</label>
-    <input type="text" name="name" id="name">
+    <label for="line_id">Add a Line</label>
+    <input type="text" name="line_id" id="line_id">
     </div>
   <button type="submit">Add Line</button>
 </form>
 
-<form id="view_line" action="index.html" method="post">
-  <div class="form-group">
-    <label for="line_id">View a Line</label>
-    <select id="line_id" name="line_id" type="text">
-      <!-- insert logic here -->
-    </select>
-  </div>
-</form>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Lines
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+    <% @lines.each() do |line| %>
+    <li><a href="/lines/<%= line.id()%>"><%= line.name() %></a></li>
+    <% end %>
+  </ul>
+</div>
 
 <p>
 <a href="/lines">Show all Lines</a>
 </p>
 
-<form id="add_station" action="index.html" method="post">
+<!-- ADD STATIONS -->
+
+<form id="add_station" action="/stations" method="post">
   <div class="form-group">
-    <label for="name">Add a Station</label>
-    <input type="text" name="name" id="name">
+    <label for="station_id">Add a Station</label>
+    <input type="text" name="station_id" id="station_id">
   </div>
   <button type="submit">Add Station</button>
 </form>
 
-<form id="view_station" action="index.html" method="post">
-  <div class="form-group">
-    <label for="station_id">View a Station</label>
-    <select id="station_id" name="station_id" type="text">
-      <!-- insert logic here -->
-    </select>
-  </div>
-</form>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Stations
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu4">
+    <% @stations.each() do |station| %>
+      <li><a href="/stations/<%= station.id()%>"><%= station.name() %></a></li>
+    <% end %>
+  </ul>
+</div>
 
 <p>
 <a href="/stations">Show all Stations</a>

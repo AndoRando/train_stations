@@ -1,9 +1,11 @@
+require('pry')
+
 class Line
   attr_reader(:name, :id)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
+    # @id = attributes.fetch(:id)
   end
 
   define_singleton_method(:all) do
@@ -12,14 +14,14 @@ class Line
     returned_lines.each() do |line|
       name = line.fetch("name")
       id = line.fetch("id").to_i
-      lines.push(Line.new({:name => name, :id => id}))
+      lines.push(Line.new({:name => name, :id => nil}))
     end
     lines
   end
 
   define_method(:save) do
     temp = DB.exec("INSERT INTO lines (name) VALUES ('#{@name}') RETURNING id;")
-      @id = temp.first().fetch("id").to_i()
+    @id = temp.first().fetch("id").to_i()
   end
 
   define_method(:==) do |another_line|
@@ -31,11 +33,13 @@ class Line
   end
 
   define_singleton_method(:find) do |id|
+    found_line = nil
     Line.all().each() do |line|
-      if line.id == id
-        return line
+      if line.id() == id
+        found_line = line
       end
     end
+    found_line
   end
 
   define_method(:update) do |attributes|
