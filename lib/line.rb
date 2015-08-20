@@ -5,7 +5,7 @@ class Line
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    # @id = attributes.fetch(:id)
+    @id = attributes.fetch(:id)
   end
 
   define_singleton_method(:all) do
@@ -13,8 +13,8 @@ class Line
     lines = []
     returned_lines.each() do |line|
       name = line.fetch("name")
-      id = line.fetch("id").to_i
-      lines.push(Line.new({:name => name, :id => nil}))
+      id = line.fetch("id").to_i()
+      lines.push(Line.new({:name => name, :id => id}))
     end
     lines
   end

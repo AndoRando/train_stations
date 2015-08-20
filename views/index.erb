@@ -4,7 +4,6 @@
 <!-- RIDERS -->
 
 
-<div class="col-md-4">
 <h2>For Riders:</h2>
 
 <div class="dropdown">
@@ -15,8 +14,7 @@
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <% @lines.each() do |line| %>
       <li><a href="/lines/<%= line.id()%>"><%= line.name() %></a></li>
-    <% end %>
-  </ul>
+    <% end %>  </ul>
 </div>
 
 <p>
@@ -103,5 +101,3 @@
 <p>
 <a href="/stations">Show all Stations</a>
 </p>
-
-</div>

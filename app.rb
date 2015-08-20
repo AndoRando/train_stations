@@ -19,7 +19,7 @@ end
 ###### LINES
 
 get('/lines/:id') do
-  @line = Line.find(params.fetch('id'))
+  @line = Line.find(params.fetch('id').to_i())
   erb(:line)
 end
 
