@@ -1,1 +1,15 @@
 <h1><%= @line.name %></h1>
+
+<form action="/lines/<%= @line.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="line_name">Rename the Line:</label>
+  <input type="text" name="line_name" id="line_name">
+
+  <button type="submit">Update</button>
+</form>
+
+<form action="/lines/<%= @line.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button type="submit">Delete Line</button>
+</form>

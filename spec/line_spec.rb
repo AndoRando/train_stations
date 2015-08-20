@@ -47,7 +47,7 @@ describe(Line) do
       test_line1.save
       test_line2 = Line.new({ :name => "Coast Starlight", :id => nil})
       test_line2.save
-      expect(Line.find(test_line1.id)).to eq(test_line1)
+      expect(Line.find(test_line1.id)).to(eq(test_line1))
     end
   end
 
@@ -56,17 +56,31 @@ describe(Line) do
       test_line = Line.new({ :name => "Foo Line", :id => nil})
       test_line.save
       test_line.update({:name => "Bar Line"})
+      expect(test_line.name()).to(eq("Bar Line"))
+    end
+
+    it("adds stations to a line") do
+      test_line = Line.new({:name => 'red', :id => nil})
+      test_line.save
+      beaverton = Station.new({:name => "beaverton", :id => nil })
+      beaverton.save()
+      tigard = Station.new({:name => 'tigard', :id => nil})
+      tigard.save()
+      test_line.update({:station_ids => [beaverton.id(), tigard.id()]})
+      expect(test_line.stations()).to(eq([beaverton, tigard]))
     end
   end
 
-  # describe('#associate_station') do
-  #   it('returns an array of associated stations') do
-  #   test_line1 = Line.new({ :name => "Foo Line", :id => nil})
-  #   test_line1.save
-  #   test_station = Station.new({ :name => "Emancipation Station", :id => nil})
-  #   test_station.save
-  #   test_line1.associate_station(test_station)
-  #   expect(test_line1.get_associated_stations).to(eq([test_station]))
-  #   end
-  # end
+  describe('#stations') do
+    it ('returns all stations of one line') do
+      test_line = Line.new({:name => 'red', :id => nil})
+      test_line.save
+      beaverton = Station.new({:name => "beaverton", :id => nil })
+      beaverton.save()
+      tigard = Station.new({:name => 'tigard', :id => nil})
+      tigard.save()
+      test_line.update({:station_ids => [beaverton.id(), tigard.id()]})
+      expect(test_line.stations()).to(eq([beaverton, tigard]))
+    end
+  end
 end

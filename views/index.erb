@@ -7,22 +7,22 @@
 <h2>For Riders:</h2>
 
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <button class="btn btn-default dropdown-toggle" type="button" id="lines_dropdown_riders" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Lines
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <% @lines.each() do |line| %>
-      <li><a href="/lines/<%= line.id()%>"><%= line.name() %></a></li>
+      <li><a id="riders_<%= line.id() %>" href="/lines/<%= line.id() %>"><%= line.name() %></a></li>
     <% end %>  </ul>
 </div>
 
 <p>
-  <a href="/lines">Show all Lines</a>
+  <a href="/lines" id="all_lines_rider">Show all Lines</a>
 </p>
 
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <button class="btn btn-default dropdown-toggle" type="button" id="stations_dropdown_riders" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Stations
     <span class="caret"></span>
   </button>
@@ -34,7 +34,7 @@
 </div>
 
 <p>
-  <a href="/stations">Show all Stations</a>
+  <a href="/stations" id="all_stations_rider">Show all Stations</a>
 </p>
 
 
@@ -61,19 +61,19 @@
 </form>
 
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <button class="btn btn-default dropdown-toggle" type="button" id="lines_dropdown_operators" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Lines
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
     <% @lines.each() do |line| %>
-    <li><a href="/lines/<%= line.id()%>"><%= line.name() %></a></li>
+    <li><a id="operators_<%= line.id() %>" href="/lines/<%= line.id() %>"><%= line.name() %></a></li>
     <% end %>
   </ul>
 </div>
 
 <p>
-<a href="/lines">Show all Lines</a>
+<a href="/lines" id="all_lines_operators">Show all Lines</a>
 </p>
 
 <!-- ADD STATIONS -->
@@ -87,7 +87,7 @@
 </form>
 
 <div class="dropdown">
-  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+  <button class="btn btn-default dropdown-toggle" type="button" id="stations_dropdown_operators" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Stations
     <span class="caret"></span>
   </button>
@@ -99,5 +99,5 @@
 </div>
 
 <p>
-<a href="/stations">Show all Stations</a>
+<a href="/stations" id="all_stations_operators">Show all Stations</a>
 </p>

@@ -1,1 +1,15 @@
 <h1><%= @station.name %></h1>
+
+<form action="/stations/<%= @station.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+
+  <label for="station_name">Rename the Station:</label>
+  <input type="text" name="station_name" id="station_name">
+
+  <button name="Submit">Update</button>
+</form>
+
+<form action="/stations/<%= @station.id() %>" method="post">
+  <input type="hidden" name="_method" value="delete">
+  <button name="submit">Delete Station</button>
+</form>

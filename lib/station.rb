@@ -12,7 +12,7 @@ class Station
     returned_stations.each() do |station|
       name = station.fetch("name")
       id = station.fetch("id").to_i
-      stations.push(Station.new({:name => name, :id => nil}))
+      stations.push(Station.new({:name => name, :id => id}))
     end
     stations
   end
@@ -45,18 +45,4 @@ class Station
     @id = self.id
     DB.exec("UPDATE stations SET name = '#{@name}' WHERE id = #{@id};")
   end
-
-  # define_method(:associate_line) do |line|
-  #   DB.exec("INSERT INTO stops (lines_id, stations_id) VALUES ('#{line.id}', '#{self.id}');")
-  # end
-  #
-  # define_method(:get_associated_lines) do
-  #   lines_ids = DB.exec("SELECT lines_id FROM stops WHERE stations_id = #{self.id};")
-  #   output_array = []
-  #   lines_ids.each() do |hash|
-  #     id = hash["lines_id"]
-  #     output_array.push(Line.find(id))
-  #   end
-  #   output_array
-  # end
 end

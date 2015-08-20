@@ -56,6 +56,7 @@ describe(Station) do
       test_station = Station.new({ :name => "Foo Station", :id => nil})
       test_station.save
       test_station.update({:name => "Bar Station"})
+      expect(test_station.name).to(eq("Bar Station"))
     end
   end
 

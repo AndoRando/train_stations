@@ -43,22 +43,23 @@ class Line
   end
 
   define_method(:update) do |attributes|
-    @name = attributes.fetch(:name)
-    @id = self.id
-    DB.exec("UPDATE lines SET name = '#{@name}' WHERE id = #{@id};")
+    @name = attributes.fetch(:name, @name)
+    DB.exec("UPDATE lines SET name = '#{@name}' WHERE id = #{self.id()};")
+
+    attributes.fetch(:station_ids, []).each() do |station_id|
+      DB.exec("INSERT INTO stops (line_id, station_id) VALUES (#{station_id}, #{self.id()});")
+    end
   end
 
-  # define_method(:associate_station) do |station|
-  #   DB.exec("INSERT INTO stops (lines_id, stations_id) VALUES ('#{self.id}', '#{station.id}');")
-  # end
-  #
-  # define_method(:get_associated_stations) do
-  #   stations_ids = DB.exec("SELECT * FROM stops WHERE lines_id = #{self.id};")
-  #   output_array = []
-  #   stations_ids.each() do |hash|
-  #     id = hash["stations_id"]
-  #     output_array.push(Station.find(id)[0])
-  #   end
-  #   output_array
-  # end
+  define_method(:stations) do
+    line_stations = []
+    results = DB.exec("SELECT station_id FROM stops WHERE line_id = #{self.id()};")
+    results.each() do |result|
+      station_id = result.fetch('station_id').to_i()
+      station = DB.exec("SELECT * FROM stations WHERE id = #{station_id};")
+      name = station.first().fetch('name')
+      line_stations.push(Station.new({:name => name, :id => station_id}))
+    end
+    line_stations
+  end
 end
