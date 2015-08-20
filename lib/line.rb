@@ -47,7 +47,7 @@ class Line
     DB.exec("UPDATE lines SET name = '#{@name}' WHERE id = #{self.id()};")
 
     attributes.fetch(:station_ids, []).each() do |station_id|
-      DB.exec("INSERT INTO stops (line_id, station_id) VALUES (#{station_id}, #{self.id()});")
+      DB.exec("INSERT INTO stops (line_id, station_id) VALUES (#{self.id()}, #{station_id});")
     end
   end
 
